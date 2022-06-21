@@ -106,9 +106,10 @@ def show_page():
     elif how == "I'll Select my TimeZone":
         # list of available options
         tz_list = [f"UTC{x}" if float(x)<0 else f"UTC+{x}" for x in sorted(list(map(float, tzp_map.keys()))) ]
-        print(tz_list)
         tz_select = st.selectbox("Please Select Your Nearest TimeZone from this list", ['SELECT A TIMEZONE']+tz_list)
         tzoffset = (tz_select.replace('UTC','')).replace('+','')
+        if tz_select != 'SELECT A TIMEZONE':
+            st.success(f"Your Selected TimeZone is: {tz_select}")
 
     # get projects
     project_and_count = Counter()
@@ -124,26 +125,25 @@ def show_page():
                 if tzoffset_val - 2 <= key_val <= tzoffset_val +2 :
                     project_and_count_near += dict(tzp_map[key])
 
-    # Select no. of recommendations
-    no_project = st.slider('Select How Many Project Recommendations you wish to see:', min_value=1, max_value=20, value=5)
+        # Select no. of recommendations
+        no_project = st.slider('Select How Many Project Recommendations you wish to see:', min_value=1, max_value=20, value=5)
 
-    # Table Explanantion
-    with st.expander("See Table Explanation"):
-        st.info('''The Contributor Counts show how many people have made a commit to the specific projects, calculated using World of Code (WoC). 
-                It can be different (typically higher) than the contributor count on GitHub since the method of calculation is different, 
-                e.g., WoC counts the authors of rejected/pending Pull Requests as contributors, but GitHub doesn't.
-                Moreover, since we did not use any fork-resolution, the projects might be a fork of another project, in which case, 
-                the user is recommeded to look into the source project. 
-        ''')
-    p = show_table(project_and_count, no_project)
-    st.header('Project Recommendation Table - Projects in your TimeZone (scrollable)')
-    st.bokeh_chart(p)
+        # Table Explanantion
+        with st.expander("See Table Explanation"):
+            st.info('''The Contributor Counts show how many people have made a commit to the specific projects, calculated using World of Code (WoC). 
+                    It can be different (typically higher) than the contributor count on GitHub since the method of calculation is different, 
+                    e.g., WoC counts the authors of rejected/pending Pull Requests as contributors, but GitHub doesn't.
+                    Moreover, since we did not use any fork-resolution, the projects might be a fork of another project, in which case, 
+                    the user is recommeded to look into the source project. 
+            ''')
+        p = show_table(project_and_count, no_project)
+        st.header('Project Recommendation Table - Projects in your TimeZone (scrollable)')
+        st.bokeh_chart(p)
 
-    p_near = show_table(project_and_count_near, no_project)
-    st.header('Project Recommendation Table - Projects in nearby TimeZones (scrollable)')
-    st.bokeh_chart(p_near)
+        p_near = show_table(project_and_count_near, no_project)
+        st.header('Project Recommendation Table - Projects in nearby TimeZones (scrollable)')
+        st.bokeh_chart(p_near)
 
 if __name__ == '__main__':
     st.set_page_config(page_title='Location-based OSS Project Prediction', layout="wide")
     show_page()
-    
