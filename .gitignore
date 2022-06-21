@@ -1,0 +1,4 @@
+helper/
+venv/
+.DS-store
+*.png
