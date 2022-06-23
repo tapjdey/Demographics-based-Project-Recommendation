@@ -21,7 +21,7 @@ def show_table(PCgtzCatzCggCagMFtzMFg, colnames):
     ]+[TableColumn(field="Rank", title="Rank")]
 
     p = DataTable(source=cds, columns=columns, css_classes=["card"], index_position=None,
-    autosize_mode="fit_columns", syncable=False, width_policy='max', height=200, height_policy="auto", width = 1000)
+    autosize_mode="fit_columns", syncable=False, width_policy='max', height=200, height_policy="auto")
 
     return(p)
 
@@ -108,7 +108,7 @@ def show_page():
 
     # Define input option dicts - makes easier to reference
     tz_option = {'I want to select my Time Zone':'s_tz', 'Show me the Global Results': 's_g',
-     "Get my Time Zone Automatically (only works if you're hosting the app yourself!)": 'a_tz'}
+     "Get my Time Zone Automatically **(only works if you're hosting the app yourself!)**": 'a_tz'}
 
     gender_option = {'Show me Projects Popular among Male Developers': 'male',
     'Show me Projects Popular among Female Developers': 'female', 'Show me Projects Popular among all Developers': 'all'}
@@ -172,7 +172,7 @@ def show_page():
         ['Local Diversity', 'Global Diversity'] ,horizontal=True, 
         help='Diversity can be calculated among the developers in your Time Zone who contributed to a project (Local Diversity) or \
             among all developers globally (Global Diversity). Choose which value of diversity you want to filter by.')
-        diversity_value = st.slider("Select a range of values: (percentage of female developers)", 1, 100, (50,80)) # two values
+        diversity_value = st.slider("Select a range of values: (percentage of female developers)", 1, 100, (10,50)) # two values
 
     # no. of recommendations
     no_project = st.slider('Select How Many Project Recommendations you wish to see:', min_value=1, max_value=20, value=5)
@@ -201,7 +201,7 @@ def show_page():
             7. `Female Dev.:Global`: Percentage of Female Developers among contributors to the project globally.
             8. `Rank`: Rank of the project (sorted by column 2).
 
-            Additionally, the table is interactive and can be sorted by any of the columns - just click on the column header!
+            **Additionally, the Tables are Interactive and can be SORTED by any of the columns - _just click on the column header!_**
             """)
 
     gender = gender_option[gender_select]
