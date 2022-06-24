@@ -1,4 +1,4 @@
-# Demographic-based-Project-Recommendation
+# Demographic based Project Recommendation for OSS Newcomers
 
 Our goal is to show the most popular projects (in terms of the number of contributors) to the user based on their Time Zone and Gender preferences. Users can also choose to see the more Gender-Diverse projects based on their preference.
 
