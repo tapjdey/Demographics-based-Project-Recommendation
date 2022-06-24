@@ -1,9 +1,13 @@
-# Timezone-based-Project-Recommendation
+# Demographic-based-Project-Recommendation
 
-Here we are showing the most popular projects (in terms of the number of contributors) in the user's Time Zone and the nearby Time Zones (User's Time Zone ± 2 Hours).
+Our goal is to show the most popular projects (in terms of the number of contributors) to the user based on their Time Zone and Gender preferences. Users can also choose to see the more Gender-Diverse projects based on their preference.
 
-We show two Tables - The top one with popular projects in the user's own Time Zone, the bottom one with popular projects in nearby TimeZones.
+We are showing the popular projects in the user's Time Zone or Globally based on their choice.Optionally, we can show the popular projects in nearby Time Zones (User's Time Zone ± 2 Hours). 
 
-The `.json` file contains processed data from [World of Code](https://worldofcode.org/), which is the source dataset for this project.
+We can also show projects based on the user's gender preference (male or female) or across all genders as per their choice.
+
+The source data is collected using the [World of Code](https://worldofcode.org/) (WoC) dataset.
 
 The app is built using `Python` `Streamlit`. More details available on the app page.
+
+DISCLAIMER! We fully support people who do not identify with either of the two binary genders, the reason for showing only two genders here is because WoC only identifies people as male or female (or 'Unknown' for developers who do not provide a name that can be easily identified as male or female).
