@@ -10,4 +10,6 @@ The source data is collected using the [World of Code](https://worldofcode.org/)
 
 The app is built using `Python` `Streamlit`. More details available on the app page.
 
+Please use the [provided](https://github.com/tapjdey/Demographics-based-Project-Recommendation/tree/main/.github/ISSUE_TEMPLATE) Templates for repprting Issues and Requesting Features.
+
 DISCLAIMER! We fully support people who do not identify with either of the two binary genders, the reason for showing only two genders here is because WoC only identifies people as male or female (or 'Unknown' for developers who do not provide a name that can be easily identified as male or female).
