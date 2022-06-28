@@ -35,6 +35,8 @@ def filter_table(is_diversity, diversity_value, diversity_option, data, tzoffset
         else:
             listindex = -1
         # print(min_mf_ratio, max_mf_ratio)
+        if gender not in data[tzoffset].keys():
+            return (rec_table)
         for item in data[tzoffset][gender]:
             if min_mf_ratio <= float(item[listindex]) <= max_mf_ratio:
                 rec_table.append(item) 
@@ -228,7 +230,7 @@ def show_page():
         
         p = show_table(fil_table, colnames)
         # st.write(rec_table)
-        st.header('Project Recommendation Table (scrollable)')
+        st.header('Project Recommendation Table - Selected Time Zone (scrollable)')
         st.bokeh_chart(p)
 
         # projects in nearby timezones
@@ -257,7 +259,7 @@ def show_page():
                     fil_table_near.append(el)
             p_near = show_table(fil_table_near, colnames)
             # st.write(rec_table)
-            st.header('Project Recommendation Table (scrollable)')
+            st.header('Project Recommendation Table - Nearby Time Zones (scrollable)')
             st.bokeh_chart(p_near)
 
 
